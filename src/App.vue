@@ -29,6 +29,9 @@ Where in the World?
 
 @import '/assets/bootstrap.min.css';
 
+body{
+  font-family: 'Nunito', sans-serif;
+}
 li{
   list-style-type: none;
   padding:5px 0px

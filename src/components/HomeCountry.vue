@@ -3,37 +3,45 @@
     <input
       type="text"
       v-model="search"
-    class="form-control col-lg-4"
+      class="form-control col-lg-4"
       placeholder="Search for country"
     />
-<select>
+    <select>
+      <option> region</option>
+    </select>
 
+    <div class="row mt-5 mb-5">
+      <div class="col-lg-3 mb-5" v-for="(country, index) in filteredList" :key="index">
+        <div class="card">
+          <img
+            class="card-img-top"
+            :src="country.flag"
+            alt="image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ country.name }}</h5>
+            <p class="card-text">
+              <strong>Population:</strong>{{ Number(country.population).toLocaleString() }}
+              <!-- {{ num.toLocaleString() }} -->
+            </p>
+            <p class="card-text"><strong>Region:</strong>
+            {{ country.region }}
+            </p>
 
-  <option> region</option>
-</select>
-
-
-<div class="row">
-
-
-  <div class="col-lg-3">
-<div class="card">
-  <img class="card-img-top" src="" alt="">
-  <div class="card-body">
-    <h5 class="card-title">Title</h5>
-    <p class="card-text">Content</p>
-  </div>
-</div>
-
-  </div>
-</div>
-    <div v-for="(country, index) in countries" :key="index">
-      {{ country.name }}
+            <p class="card-text"><strong>Capital:</strong>
+            {{ country.capital }}
+            
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    
   </div>
 </template>
 
 <script>
+// import image from '../assets/logo.png'
 import axios from "axios";
 export default {
   data() {
@@ -49,13 +57,21 @@ export default {
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then((res) => {
-        console.log(res);
         this.countries = res.data;
+        console.log(res);
+
       })
       .catch((e) => {
         console.log(e);
       });
   },
+
+   computed: {
+    filteredList() {
+      return this.countries.filter(country => {
+        return country.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    } }
 
   // computed: {
   //   filtercountry() {
@@ -71,27 +87,25 @@ export default {
   //   },
   // },
 };
-
-
 </script>
 
 <style>
-@import '../assets/bootstrap.min.css';
+@import "../assets/bootstrap.min.css";
 
+.card {
+  outline: none;
+  border: none !important;
+  /* background-color:green !important */
+}
 
+body{
+  background-color:hsl(0, 0%, 98%);
+  font-family: 'Nunito', sans-serif;
 
+}
+
+img{
+  height:50%;
+}
 </style>
-<div class="form-group">
-  <label for="my-select">Text</label>
-  <select id="my-select" class="form-control" name="" multiple>
-    <option>Text</option>
-  </select>
-</div>
 
-<div class="card">
-  <img class="card-img-top" src="" alt="">
-  <div class="card-body">
-    <h5 class="card-title">Title</h5>
-    <p class="card-text">Content</p>
-  </div>
-</div>
