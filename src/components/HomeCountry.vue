@@ -185,6 +185,14 @@ export default {
 <style>
 @import "../assets/bootstrap.min.css";
 
+a{
+  color:#000;
+}
+
+a:hover{
+  color:#000;
+  text-decoration: none;
+}
 .card {
   outline: none;
   border: none !important;
