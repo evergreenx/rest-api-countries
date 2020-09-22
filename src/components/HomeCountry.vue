@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5 py-5">
     <input
       type="text"
       v-model="search"

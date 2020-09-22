@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
 
-<nav class="navbarx navbar-light px-5 mb-5">
+<nav class="navbarx navbar-light px-5 mb-5 fixed-top">
 
 <a class="navbar-brandx brand">
 Where in the World?
