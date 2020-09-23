@@ -96,7 +96,7 @@
           <div class="card-body">
 
             <router-link 
-            :to="{name:'country-details' , params:{country:country.name}}">
+            :to="{name:'country-detail' , params:{country:country.name}}">
 
             <strong>
               <h5 class="card-title">{{ country.name }}</h5></strong
@@ -140,7 +140,7 @@ export default {
     };
   },
 
-  created() {
+  mounted() {
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then((res) => {
