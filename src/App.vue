@@ -6,7 +6,9 @@
           Where in the World?
         </router-link>
 
-        <li class="mt-1">Dark Mode</li>
+        <li class="mt-1">
+          <i class="fas fa-moon"></i>
+          Dark Mode</li>
       </nav>
     </div>
 

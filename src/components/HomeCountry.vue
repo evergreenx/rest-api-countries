@@ -11,7 +11,7 @@
       </div>
 
       <div class="col-lg-4">
-        <div class="btn-group dropdown">
+        <div class="btn-group">
           <button class="btn btn-whitex">Filter by Region</button>
           <button
             id="my-dropdown"
@@ -22,7 +22,7 @@
           >
             <span class="sr-only">Toggle dropdown</span>
           </button>
-          <div class="dropdown-menu btn-whitex" aria-labelledby="my-dropdown">
+          <div class="dropdown-menu btn-whitex dropdown-menu-right bg-white" aria-labelledby="my-dropdown">
             <form>
               <ul>
                 <li>
@@ -82,15 +82,52 @@
             </form>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
 
     <div class="row mt-5 mb-5">
+
       <div
         class="col-lg-3 mb-5"
         v-for="(country, index) in filteredList"
         :key="index"
       >
+
+    <div class="loaderFlex d-flex mt-5"><div v-if="pending" class="loader"></div></div>
+
         <div class="card">
           <img class="card-img-top" :src="country.flag" alt="image" />
           <div class="card-body">
@@ -137,10 +174,12 @@ export default {
       search: "",
       region: "",
       selectcat: "all",
+      pending:false
     };
   },
 
   mounted() {
+    this.pending = true
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then((res) => {
@@ -149,7 +188,10 @@ export default {
       })
       .catch((e) => {
         console.log(e);
-      });
+      }).finally(()=>{
+
+this.pending = false
+      })
   },
 
   computed: {

@@ -1,86 +1,146 @@
-
 <template>
   <div class="container mt-5 py-5">
- <div class="row mt-5 mb-5">
-      <div
-        class="col-lg-3 mb-5"
-        v-for="country in countryInfo "
-        :key="country.id"
-      >
-        <div class="card">
-          <img class="card-img-top" :src="country.flag" alt="image" />
-          <div class="card-body">
 
-          
+    <div class="back-btn">
 
-            <strong>
-              <h5 class="card-title">{{ country.name }}</h5></strong
-            >
-            <p class="card-text">
-              <strong>Population:</strong>
-              {{ Number(country.population).toLocaleString() }}
-              <!-- {{ num.toLocaleString() }} -->
-            </p>
-            <p class="card-text">
-              <strong>Region:</strong>
-              {{ country.region }}
-            </p>
+<button class="btn shadow btnx">
+  Back</button>
 
-            <p class="card-text">
-              <strong>Capital:</strong>
-              {{ country.capital }}
-            </p>
 
-          <!-- </router-link> -->
+    </div>
+    <div class="loaderFlex d-flex mt-5">
+      <div v-if="pending" class="loader"></div>
+    </div>
 
-          </div>
+    <div class="row mt-5 mb-5" v-for="country in countryInfo" :key="country.id">
+      <div class="col-lg-5 mb-4">
+        <img :src="country.flag" alt="image" class="img-fluid" />
+      </div>
 
-        </div>
+      <div class="col-lg-3 mb-4">
+        <strong>
+          <h3>{{ country.name }}</h3></strong
+        >
+
+        <p>
+          <strong> Native Name : </strong>
+
+          {{ country.nativeName }}
+        </p>
+
+        <p>
+          <strong>
+            Popuation :
+          </strong>
+          {{ country.population }}
+        </p>
+
+        <p>
+          <strong>
+            Region :
+          </strong>
+          {{ country.region }}
+        </p>
+        <p>
+          <strong>
+            Sub Region :
+          </strong>
+          {{ country.subregion }}
+        </p>
+
+        <p>
+          <strong>
+            Capital :
+          </strong>
+          {{ country.capital }}
+        </p>
+      </div>
+
+      <div class="col-lg-3 mb-4">
+        <p>
+          <strong>
+            Top Level Domain :
+          </strong>
+          {{ country.topLevelDomain }}
+        </p>
+
+        <p>
+          <strong>
+            Currencies :
+          </strong>
+          {{ country.currencies }}
+        </p>
+
+        <p>
+          <strong>
+            Language :
+          </strong>
+          {{ country.currencies }}
+        </p>
       </div>
     </div>
-   
-   
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  name: 'Countries',
- data(){
-   return{
-     countryInfo: null,
-   }
-
- } ,
-   mounted() {
+  name: "Countries",
+  data() {
+    return {
+      countryInfo: null,
+      pending: false,
+    };
+  },
+  mounted() {
+    this.pending = true;
     axios
       .get(
-        `https://restcountries.eu/rest/v2/name/${this.$route.params.country}?fullText=true`)
-      
-      
+        `https://restcountries.eu/rest/v2/name/${this.$route.params.country}?fullText=true`
+      )
+
       .then((res) => {
         this.countryInfo = res.data;
         console.log(res);
       })
       .catch((e) => {
         console.log(e);
+      })
+      .finally(() => {
+        this.pending = false;
       });
   },
-  created() {
+  created() {},
 
-  },
- 
-  props: {
-   
-  },
-  methods: {
-   
-  },
-}
+  props: {},
+  methods: {},
+};
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #2b3845;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  transition: 1s ease;
+}
+.borders .loader {
+  width: 60px;
+  height: 60px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loaderFlex {
+  display: flex;
+  justify-content: center;
+}
 </style>
-
