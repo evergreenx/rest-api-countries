@@ -1,4 +1,4 @@
-# rest-api-appx
+# rest-Country-api-app
 
 ## Project setup
 ```
