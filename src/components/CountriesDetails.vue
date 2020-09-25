@@ -3,8 +3,9 @@
 
     <div class="back-btn">
 
-<button class="btn shadow btnx">
-  Back</button>
+
+<button class="btn shadow btnx" @click='$router.go(-1)'>
+ <i class="fas fa-long-arrow-alt-left"> Back</i></button>
 
 
     </div>
@@ -19,7 +20,7 @@
 
       <div class="col-lg-3 mb-4">
         <strong>
-          <h3>{{ country.name }}</h3></strong
+          <h3 class="mt-2">{{ country.name }}</h3></strong
         >
 
         <p>
@@ -56,26 +57,26 @@
         </p>
       </div>
 
-      <div class="col-lg-3 mb-4">
+      <div class="col-lg-3 mb-4 mt-5">
         <p>
           <strong>
             Top Level Domain :
           </strong>
-          {{ country.topLevelDomain }}
+          {{ country.topLevelDomain['0'] }}
         </p>
 
         <p>
           <strong>
             Currencies :
           </strong>
-          {{ country.currencies }}
+          {{ country.currencies['0'].name }}
         </p>
 
         <p>
           <strong>
             Language :
           </strong>
-          {{ country.currencies }}
+          {{ country.languages['0'].name }}
         </p>
       </div>
     </div>
