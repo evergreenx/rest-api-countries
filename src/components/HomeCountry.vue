@@ -287,23 +287,3 @@ input {
 }
 </style>
 
-<div class="form-group">
-  <label for="my-select">Text</label>
-  <select id="my-select" class="form-control" name="">
-    <option>Text</option>
-  </select>
-</div>
-
-<div class="dropdown-menu">
-  <a class="dropdown-item active" href="#">Text</a>
-</div>
-
-<div class="btn-group dropdown">
-  <button class="btn btn-primary">Text</button>
-  <button id="my-dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle dropdown</span>
-  </button>
-  <div class="dropdown-menu" aria-labelledby="my-dropdown">
-    <a class="dropdown-item active" href="#">Text</a>
-  </div>
-</div>
