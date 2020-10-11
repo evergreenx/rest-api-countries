@@ -184,10 +184,10 @@ export default {
       .get("https://restcountries.eu/rest/v2/all")
       .then((res) => {
         this.countries = res.data;
-        console.log(res);
+      
       })
       .catch((e) => {
-        console.log(e);
+        alert(e)
       }).finally(()=>{
 
 this.pending = false
@@ -208,19 +208,7 @@ this.pending = false
     },
   },
 
-  // computed: {
-  //   filtercountry() {
-  //     return this.countries.filter((country) => {
-  //       if (this.region === "" || this.region === "All Regions") {
-  //         return country.name.toLowerCase().match(this.search.toLowerCase);
-  //       } else if (this.search !== "") {
-  //         return country.name.toLowerCase().match(this.search.toLowerCase);
-  //       } else {
-  //         return country.region.match(this.region);
-  //       }
-  //     });
-  //   },
-  // },
+
 };
 </script>
 
